@@ -8,23 +8,29 @@ export type ProjectDescription = {
   projectId: string,
   description: string,
   linkUrl: string,
+  imageUrl: string,
+  linkText: string,
   projectInitFunction: () => Promise<void>,
 }
 
 export const projectList: ProjectDescription[] = [
   {
-    name: "Basemapkit: Avenue (simple)",
+    name: "Basemapkit: Avenue",
     projectId: "basemapkit-avenue-simple",
     description: "Making use of the Avenue style as defined in Basemapkit",
-    linkUrl: "https://github.com/jonathanlurie/basemapkit",
+    linkUrl: "/?project=basemapkit-avenue-simple",
+    imageUrl: "/thumbnails/basic.jpg",
+    linkText: "Explore",
     projectInitFunction: initBasemapkitAvenueSimple,
   },
 
   {
-    name: "Basemapkit: Avenue (vintage)",
+    name: "Basemapkit: Avenue Vintage",
     projectId: "basemapkit-avenue-vintage",
-    description: "Making use of the Avenue Vintage style as defined in Basemapkit",
-    linkUrl: "https://github.com/jonathanlurie/basemapkit",
+    description: "Using Basemapkit to give a vintage vibe to a map",
+    linkUrl: "/?project=basemapkit-avenue-vintage",
+    imageUrl: "/thumbnails/vintage.jpg",
+    linkText: "Explore",
     projectInitFunction: initBasemapkitAvenueVintage,
   }
 ] as const;
@@ -37,4 +43,8 @@ export function getProjectFromUrlParam(): null | ProjectDescription {
   if (projectId === null) return null;
   const candidates = projectList.filter(p => p.projectId === projectId);
   return candidates.length ? candidates[0] : null;
+}
+
+export function getDefaultProject(): ProjectDescription {
+ return Object.values(projectList)[0];
 }

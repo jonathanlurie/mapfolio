@@ -85,7 +85,7 @@ export class Card extends HTMLElement {
             
             .card-image {
                 width: 100%;
-                height: 200px;
+                height: 300px;
                 object-fit: cover;
                 background-color: #f0f0f0;
             }
@@ -147,7 +147,7 @@ export class Card extends HTMLElement {
             <div class="card-content">
                 <h3 class="card-title">${this.cardTitle}</h3>
                 <p class="card-description">${this.cardDescription}</p>
-                <a href="${this.cardLink}" class="card-link" target="_blank" rel="noopener">
+                <a href="${this.cardLink}" class="card-link">
                     ${this.linkText}
                 </a>
             </div>
