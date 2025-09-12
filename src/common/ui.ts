@@ -25,9 +25,9 @@ export function fillUpMenu() {
   for (const project of projectList) {
     const projectCard = new Card({
       title: project.name,
-      imageUrl: project.imageUrl,
+      imageUrl: `/thumbnails/${project.projectId}.jpg`,
       description: project.description,
-      link: project.linkUrl,
+      link: `/?project=${project.projectId}`,
       linkText: project.linkText,
     });
 

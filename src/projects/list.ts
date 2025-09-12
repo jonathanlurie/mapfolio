@@ -1,38 +1,20 @@
 import { getProjectIdFromUrlParam } from "../common/ui";
-import { init as initBasemapkitAvenueSimple } from "./basemapkit-avenue-simple";
-import { init as initBasemapkitAvenueVintage } from "./basemapkit-avenue-vintage";
+import avenueSimpleProject from "./basemapkit-avenue-simple";
+import avenueVintageProject from "./basemapkit-avenue-vintage";
 
 
 export type ProjectDescription = {
   name: string,
   projectId: string,
   description: string,
-  linkUrl: string,
   imageUrl: string,
   linkText: string,
   projectInitFunction: () => Promise<void>,
 }
 
 export const projectList: ProjectDescription[] = [
-  {
-    name: "Basemapkit: Avenue",
-    projectId: "basemapkit-avenue-simple",
-    description: "Making use of the Avenue style as defined in Basemapkit",
-    linkUrl: "/?project=basemapkit-avenue-simple",
-    imageUrl: "/thumbnails/basic.jpg",
-    linkText: "Explore",
-    projectInitFunction: initBasemapkitAvenueSimple,
-  },
-
-  {
-    name: "Basemapkit: Avenue Vintage",
-    projectId: "basemapkit-avenue-vintage",
-    description: "Using Basemapkit to give a vintage vibe to a map",
-    linkUrl: "/?project=basemapkit-avenue-vintage",
-    imageUrl: "/thumbnails/vintage.jpg",
-    linkText: "Explore",
-    projectInitFunction: initBasemapkitAvenueVintage,
-  }
+  avenueSimpleProject,
+  avenueVintageProject
 ] as const;
 
 /**

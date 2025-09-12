@@ -8,9 +8,10 @@ import {
   PMTILE_TERRAIN_MAPTERHORN_PLANET
 } from "../../common/env";
 import { getMainDiv } from "../../common/ui";
+import type { ProjectDescription } from "../list";
 
 
-export async function init() {
+async function init() {
   const appDiv = getMainDiv();
   maplibregl.addProtocol("pmtiles", new Protocol().tile);
 
@@ -38,3 +39,12 @@ export async function init() {
     zoom: 3,
   });
 }
+
+
+export default {
+  name: "Basemapkit: Avenue",
+  description: "Making use of the Avenue style as defined in Basemapkit",
+  projectId: "basemapkit-avenue-simple",
+  linkText: "Explore",
+  projectInitFunction: init,
+} as ProjectDescription;
