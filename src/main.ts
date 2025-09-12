@@ -16,6 +16,9 @@ import { fillUpMenu, showMenu, toggleMenu } from "./common/ui";
   // Loading the project from URL param
   const projectInfo = getProjectFromUrlParam();
   if (projectInfo) {
+    (document.getElementById("project-info") as HTMLDivElement).style.setProperty("display", "inherit");
+    (document.getElementById("project-title") as HTMLDivElement).innerText = projectInfo.name;
+    (document.getElementById("project-description") as HTMLDivElement).innerHTML = projectInfo.description;
     return projectInfo.projectInitFunction();
   }
 

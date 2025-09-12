@@ -31,6 +31,7 @@ export async function init() {
   })
 
   const map = new maplibregl.Map({
+    attributionControl: false,
     container: appDiv,
     maxPitch: 89,
     hash: true,
@@ -41,9 +42,20 @@ export async function init() {
 }
 
 
+const description = `
+<p>
+  Making use of the Avenue Vintage style as defined in Basemapkit. (<a href="https://github.com/jonathanlurie/mapfolio/blob/main/src/projects/basemapkit-avenue-vintage/index.ts">see source</a>)
+</p>
+<span class="attribution">
+  <a href="https://maplibre.org/" target="_blank">MapLibre</a> |
+  <a href="https://openstreetmap.org/copyright">© OpenStreetMap Contributors</a>
+<span>
+`
+
 export default {
   name: "Basemapkit: Vintage",
-  description: "Making use of the Avenue style as defined in Basemapkit",
+  description,
+  shortDescription: "Making use of the Avenue Vintage style as defined in Basemapkit.",
   projectId: "basemapkit-avenue-vintage",
   linkText: "Explore",
   projectInitFunction: init,

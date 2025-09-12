@@ -26,7 +26,7 @@ export function fillUpMenu() {
     const projectCard = new Card({
       title: project.name,
       imageUrl: `/thumbnails/${project.projectId}.jpg`,
-      description: project.description,
+      description: project.shortDescription,
       link: `/?project=${project.projectId}`,
       linkText: project.linkText,
     });

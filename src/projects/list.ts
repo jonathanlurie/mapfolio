@@ -7,6 +7,7 @@ export type ProjectDescription = {
   name: string,
   projectId: string,
   description: string,
+  shortDescription: string,
   imageUrl: string,
   linkText: string,
   projectInitFunction: () => Promise<void>,
