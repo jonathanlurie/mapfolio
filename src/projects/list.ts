@@ -1,6 +1,7 @@
 import { getProjectIdFromUrlParam } from "../common/ui";
 import avenueSimpleProject from "./basemapkit-avenue-simple";
 import avenueVintageProject from "./basemapkit-avenue-vintage";
+import shipwreckProject from "./shipwreck";
 
 
 export type ProjectDescription = {
@@ -15,7 +16,8 @@ export type ProjectDescription = {
 
 export const projectList: ProjectDescription[] = [
   avenueSimpleProject,
-  avenueVintageProject
+  avenueVintageProject,
+  shipwreckProject,
 ] as const;
 
 /**
