@@ -11,7 +11,7 @@ body, html {
   width: 100vw;
   height: 100dvh;
   margin: 0;
-  background: radial-gradient(circle,rgba(0, 54, 181, 1) 0%, rgba(0, 10, 33, 1) 100%);
+  background: radial-gradient(circle, rgb(255 255 255) 48%, rgb(189 189 189) 82%);
 }
 
 #menu {

@@ -2,6 +2,7 @@ import { getProjectIdFromUrlParam } from "../common/ui";
 import avenueSimpleProject from "./basemapkit-avenue-simple";
 import avenueVintageProject from "./basemapkit-avenue-vintage";
 import shipwreckProject from "./shipwreck";
+import temperatureColorized from "./temperature-colorized"
 
 
 export type ProjectDescription = {
@@ -18,6 +19,7 @@ export const projectList: ProjectDescription[] = [
   avenueSimpleProject,
   avenueVintageProject,
   shipwreckProject,
+  temperatureColorized,
 ] as const;
 
 /**

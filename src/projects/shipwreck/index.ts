@@ -19,7 +19,7 @@ async function init() {
   const sprite = ICONS_PHOSPHORE_DIECUT_URL;
   const glyphs = GLYPHS_URL;
 
-  const style = getStyle("avenue", {
+  const style = getStyle("bureau-navy", {
     pmtiles,
     sprite,
     glyphs,
@@ -42,17 +42,22 @@ async function init() {
     center: [0, 0],
     zoom: 3,
   });
-
-  console.log("deug");
   
-  map.on("load", () => {
-    console.log("adding shipwrecks");
+  map.on("style.load", async () => {
     
     map.addSource("shipwreck-source",
     {
       url: "pmtiles://https://fsn1.your-objectstorage.com/public-map-data/pmtiles/demos/wrecks.pmtiles",
       type: "vector",
     });
+
+    
+
+    const sailboatImage = await map.loadImage('/icons/sailboat-fill.png');
+    const submarineImage = await map.loadImage('/icons/submarine.png');
+    
+    map.addImage('sailboat-marker', sailboatImage.data);
+    map.addImage('submarine-marker', submarineImage.data);
 
     map.addLayer({
       id: 'shipwreck-points',
@@ -61,12 +66,115 @@ async function init() {
       "source-layer": "wrecks",
       // filter: ['!', ['has', 'point_count']],
       paint: {
-        'circle-color': '#f00',
-        'circle-radius': 3,
-        // 'circle-stroke-width': 1,
-        // 'circle-stroke-color': '#fff'
+        'circle-color': 'rgb(252, 253, 191)',
+        'circle-radius': 15,
+        "circle-opacity": [
+          'interpolate',
+          ['linear'],
+          ['zoom'],
+          7, 0,
+          8, 0.4,
+        ],
       }
     });
+
+    map.addLayer({
+      'id': 'shipwreck-icons',
+      'type': 'symbol',
+      source: 'shipwreck-source',
+      "source-layer": "wrecks",
+      'layout': {
+        
+          'icon-image': 'sailboat-marker',
+          // get the year from the source's "year" property
+          'text-field': ['get', 'name'],
+          'text-font': [ 'Noto Sans Regular' ],
+          'text-offset': [0, 0.75],
+          "text-size": 12,
+          'text-anchor': 'top',
+          "icon-size": 0.5,
+          "icon-rotate": ["get", "orientatio"],
+      },
+      paint: {
+        "icon-opacity": [
+          'interpolate',
+          ['linear'],
+          ['zoom'],
+          7, 0,
+          8, 0.8,
+        ],
+        "text-opacity": [
+          'interpolate',
+          ['linear'],
+          ['zoom'],
+          7, 0,
+          8, 0.8,
+        ],
+      }
+    });
+
+    
+
+
+    map.addLayer({
+      'id': 'earthquakes-heat',
+      'type': 'heatmap',
+      'source': 'shipwreck-source',
+      "source-layer": "wrecks",
+      'maxzoom': 9,
+      'paint': {
+        // Increase the heatmap color weight weight by zoom level
+        // heatmap-intensity is a multiplier on top of heatmap-weight
+        'heatmap-intensity': [
+          'interpolate',
+          ['linear'],
+          ['zoom'],
+          3,
+          0.05,
+          7,
+          0.7
+        ],
+        // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
+        // Begin color ramp at 0-stop with a 0-transparency color
+        // to create a blur-like effect.
+        'heatmap-color': [
+          'interpolate',
+          ['linear'],
+          ['heatmap-density'],
+          // Magma colormap
+          0.05, 'rgba(28, 16, 68, 0)',
+          0.13, 'rgb(28, 16, 68)',
+          0.25, 'rgb(79, 18, 123)',
+          0.38, 'rgb(129, 37, 129)',
+          0.5, 'rgb(181, 54, 122)',
+          0.63, 'rgb(229, 80, 100)',
+          0.75, 'rgb(251, 135, 97)',
+          0.88, 'rgb(254, 194, 135)',
+          1, 'rgb(252, 253, 191)',
+        ],
+        // Adjust the heatmap radius by zoom level
+        'heatmap-radius': [
+          'interpolate',
+          ['linear'],
+          ['zoom'],
+          0,
+          5,
+          7,
+          20
+        ],
+        // Transition from heatmap to circle layer by zoom level
+        'heatmap-opacity': [
+          'interpolate',
+          ['linear'],
+          ['zoom'],
+          7.5,
+          1,
+          8,
+          0
+        ]
+      }
+    }
+  );
 
   });
 }
