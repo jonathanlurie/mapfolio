@@ -72,8 +72,8 @@ async function init() {
           'interpolate',
           ['linear'],
           ['zoom'],
-          7, 0,
-          8, 0.4,
+          7.5, 0,
+          8, 0.7,
         ],
       }
     });
@@ -100,16 +100,20 @@ async function init() {
           'interpolate',
           ['linear'],
           ['zoom'],
-          7, 0,
-          8, 0.8,
+          7.5, 0,
+          8, 1,
         ],
         "text-opacity": [
           'interpolate',
           ['linear'],
           ['zoom'],
-          7, 0,
-          8, 0.8,
+          7.5, 0,
+          8, 1,
         ],
+        "text-color": "rgb(252, 253, 191)",
+        "text-translate": [0, 10],
+        "text-halo-width": 2,
+        "text-halo-color": "rgb(28, 16, 68)"
       }
     });
 
