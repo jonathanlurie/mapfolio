@@ -41,7 +41,7 @@ async function init() {
     
     map.addSource('temperature-source', {
       type: 'raster',
-      tiles: ['/public/tilesets/temperature_colorized/{z}/{x}/{y}.png'],
+      tiles: ['/tilesets/temperature_colorized/{z}/{x}/{y}.png'],
       tileSize: 512,
       minzoom: 0,
       maxzoom: 4,

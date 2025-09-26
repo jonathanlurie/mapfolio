@@ -3,6 +3,8 @@ import avenueSimpleProject from "./basemapkit-avenue-simple";
 import avenueVintageProject from "./basemapkit-avenue-vintage";
 import shipwreckProject from "./shipwreck";
 import temperatureColorized from "./temperature-colorized"
+import cloudColorized from "./cloud-colorized";
+import pressureMslColorized from "./pressure-msl-colorized";
 
 
 export type ProjectDescription = {
@@ -20,6 +22,8 @@ export const projectList: ProjectDescription[] = [
   avenueVintageProject,
   shipwreckProject,
   temperatureColorized,
+  cloudColorized,
+  pressureMslColorized,
 ] as const;
 
 /**

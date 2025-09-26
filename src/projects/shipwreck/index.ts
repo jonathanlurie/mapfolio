@@ -121,7 +121,7 @@ async function init() {
 
 
     map.addLayer({
-      'id': 'earthquakes-heat',
+      'id': 'shipwreck-heat',
       'type': 'heatmap',
       'source': 'shipwreck-source',
       "source-layer": "wrecks",
